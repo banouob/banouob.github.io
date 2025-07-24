@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛茸茸的好所在 Furry Haven Association</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            padding: 4rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts">
+        <div class="heart" style="left: 10%; animation-delay: 0s;">🐾</div>
+        <div class="heart" style="left: 20%; animation-delay: 1s;">❤️</div>
+        <div class="heart" style="left: 30%; animation-delay: 2s;">🐾</div>
+        <div class="heart" style="left: 40%; animation-delay: 3s;">❤️</div>
+        <div class="heart" style="left: 50%; animation-delay: 4s;">🐾</div>
+        <div class="heart" style="left: 60%; animation-delay: 5s;">❤️</div>
+        <div class="heart" style="left: 70%; animation-delay: 1.5s;">🐾</div>
+        <div class="heart" style="left: 80%; animation-delay: 2.5s;">❤️</div>
+        <div class="heart" style="left: 90%; animation-delay: 3.5s;">🐾</div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">🐾 毛茸茸的好所在</div>
+            <ul class="nav-links">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#services">服務項目</a></li>
+                <li><a href="#impact">影響力</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>毛茸茸的好所在</h1>
+                <div class="hero-subtitle">Furry Haven Association</div>
+                <p>為每一隻毛孩創造溫暖的家園，用愛心連結人與動物的美好世界</p>
+                <a href="#contact" class="cta-button">加入我們的愛心行列</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">關於我們</h2>
+                <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #666;">
+                    毛茸茸的好所在成立於愛心與責任的使命下，致力於為流浪動物提供安全的庇護所，並推動動物保護教育。我們相信每一個生命都值得被愛護，透過專業的照護、醫療服務和領養媒合，為毛孩們尋找永遠的家。
+                </p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🏠</div>
+                        <h3>安全庇護</h3>
+                        <p>提供溫暖安全的住所，讓每隻毛孩都能感受到家的溫暖</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚕️</div>
+                        <h3>醫療照護</h3>
+                        <p>專業獸醫團隊提供完整的醫療服務和健康檢查</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">❤️</div>
+                        <h3>愛心領養</h3>
+                        <p>用心媒合適合的家庭，讓毛孩找到一生的伴侶</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+            <div class="container">
+                <h2 class="section-title" style="color: #333;">服務項目</h2>
+                <div class="features">
+                    <div class="feature" style="background: rgba(255,255,255,0.9); color: #333;">
+                        <div class="feature-icon">🐕</div>
+                        <h3>流浪動物救援</h3>
+                        <p>24小時緊急救援服務，第一時間為需要幫助的毛孩提供援助</p>
+                    </div>
+                    <div class="feature" style="background: rgba(255,255,255,0.9); color: #333;">
+                        <div class="feature-icon">🎓</div>
+                        <h3>教育宣導</h3>
+                        <p>推廣動物保護觀念，培養社會大眾的愛心與責任感</p>
+                    </div>
+                    <div class="feature" style="background: rgba(255,255,255,0.9); color: #333;">
+                        <div class="feature-icon">🤝</div>
+                        <h3>志工培訓</h3>
+                        <p>提供專業志工培訓課程，讓更多人參與動物保護工作</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="section">
+            <div class="container">
+                <h2 class="section-title">我們的影響力</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div>成功救援</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">300+</div>
+                        <div>愛心領養</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1000+</div>
+                        <div>醫療服務</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div>志工夥伴</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+            <div class="container">
+                <h2 class="section-title" style="color: #333;">聯絡我們</h2>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">電子信箱</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">聯絡電話</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">我想要</label>
+                            <select id="interest" name="interest" style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;">
+                                <option value="">請選擇</option>
+                                <option value="adopt">領養毛孩</option>
+                                <option value="volunteer">成為志工</option>
+                                <option value="donate">愛心捐款</option>
+                                <option value="rescue">動物救援</option>
+                                <option value="other">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">留言</label>
+                            <textarea id="message" name="message" rows="5" placeholder="請告訴我們您的需求或想法..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">送出訊息</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 毛茸茸的好所在 Furry Haven Association. 用愛心守護每一個生命</p>
+            <p>📧 info@furryhaven.org | 📞 (07) 123-4567 | 📍 高雄市</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滾動效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 表單提交處理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('謝謝您的訊息！我們會盡快與您聯絡。');
+            this.reset();
+        });
+
+        // 滾動時導航欄效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.color = '#333';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                header.style.color = 'white';
+            }
+        });
+
+        // 動態添加浮動愛心
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = Math.random() > 0.5 ? '🐾' : '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 6 + 's';
+            document.querySelector('.floating-hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // 每隔一段時間創建新的浮動愛心
+        setInterval(createFloatingHeart, 3000);
+    </script>
+</body>
+</html>
