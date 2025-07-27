@@ -237,6 +237,7 @@
         .photo-gallery {
             padding: 4rem 2rem;
             background: linear-gradient(135deg, #f8f9fa, #fff);
+            display: none;
         }
 
         .gallery-container {
@@ -416,7 +417,6 @@
             }
 
             .mission,
-            .photo-gallery,
             .contact {
                 padding: 3rem 1rem;
             }
@@ -669,7 +669,7 @@
 
         // 載入動畫觸發
         function fadeInOnScroll() {
-            const elements = document.querySelectorAll('.mission, .photo-gallery, .contact');
+            const elements = document.querySelectorAll('.mission, .contact');
             const windowHeight = window.innerHeight;
             
             elements.forEach(element => {
